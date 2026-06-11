@@ -71,3 +71,14 @@ export default defineConfig([
   },
 ])
 ```
+
+## Codespaces / API host configuration
+
+This app expects a Vite environment variable named `VITE_CODESPACE_NAME` when running inside GitHub Codespaces. Set it in a local env file (example `.env.local`) like:
+
+```
+VITE_CODESPACE_NAME=your-codespace-name
+```
+
+The frontend will build API URLs using `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev` when the variable is defined. If `VITE_CODESPACE_NAME` is not set, the app falls back to `http://localhost:8000`.
+
