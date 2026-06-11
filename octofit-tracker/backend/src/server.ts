@@ -113,8 +113,8 @@ app.get('/api/workouts/', async (_req, res) => {
 async function start() {
   try {
     await connectDatabase();
-    app.listen(PORT, () => {
-      console.log(`Server listening on port ${PORT}`);
+    app.listen(PORT, '0.0.0.0', () => {
+      console.log(`Server listening on port ${PORT} (0.0.0.0)`);
       console.log(`API URL: ${getApiUrl()}`);
     });
   } catch (err) {
