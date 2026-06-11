@@ -1,5 +1,5 @@
 import express from 'express';
-import mongoose from 'mongoose';
+import { connectDatabase } from './database';
 import { User } from './models/User';
 import { Team } from './models/Team';
 import { Activity } from './models/Activity';
@@ -112,8 +112,7 @@ app.get('/api/workouts/', async (_req, res) => {
 
 async function start() {
   try {
-    await mongoose.connect(MONGO_URL);
-    console.log('Connected to MongoDB:', MONGO_URL);
+    await connectDatabase();
     app.listen(PORT, () => {
       console.log(`Server listening on port ${PORT}`);
       console.log(`API URL: ${getApiUrl()}`);
